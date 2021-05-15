@@ -9,6 +9,8 @@ import * as instituicaoValidator from '../controllers/instituicao/instituicao.va
 
 import * as alunoController from '../controllers/aluno/aluno.controller';
 import * as alunoValidator from '../controllers/aluno/aluno.validator';
+
+import * as matriculaController from '../controllers/matricula/matricula.controller';
 const router = express.Router();
 
 //= ===============================
@@ -74,5 +76,12 @@ router.delete(
   '/aluno/:id',
   alunoController.deleteOne,
 );
+
+/**
+ * CRUD of Matricula
+ */
+router.get('/matriculas', matriculaController.getAll);
+
+router.get('/matricula/:id', matriculaController.getOne);
 
 module.exports = router;
