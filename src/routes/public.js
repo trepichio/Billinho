@@ -7,6 +7,8 @@ import * as userValidator from '../controllers/user/user.validator';
 import * as instituicaoController from '../controllers/instituicao/instituicao.controller';
 import * as instituicaoValidator from '../controllers/instituicao/instituicao.validator';
 
+import * as alunoController from '../controllers/aluno/aluno.controller';
+import * as alunoValidator from '../controllers/aluno/aluno.validator';
 const router = express.Router();
 
 //= ===============================
@@ -46,6 +48,31 @@ router.put(
 router.delete(
   '/instituicao/:id',
   instituicaoController.deleteOne,
+);
+
+/**
+ * CRUD of Aluno
+ */
+
+router.get('/alunos', alunoController.getAll);
+
+router.get('/aluno/:id', alunoController.getOne);
+
+router.post(
+  '/aluno',
+  validate(alunoValidator.createOne),
+  alunoController.createOne,
+);
+
+router.put(
+  '/aluno/:id',
+  validate(alunoValidator.updateOne),
+  alunoController.updateOne,
+);
+
+router.delete(
+  '/aluno/:id',
+  alunoController.deleteOne,
 );
 
 module.exports = router;
