@@ -27,3 +27,16 @@ export const getOne = async (req, res) => {
   }
 };
 
+
+export const createOne = async (req, res) => {
+  try {
+    const payload = req.body;
+
+    // faturas will be created by afterCreate hook
+    const newMatricula = await Matricula.create(payload);
+    return successResponse(req, res, {});
+  } catch (error) {
+    return errorResponse(req, res, error.message);
+  }
+};
+

@@ -11,6 +11,7 @@ import * as alunoController from '../controllers/aluno/aluno.controller';
 import * as alunoValidator from '../controllers/aluno/aluno.validator';
 
 import * as matriculaController from '../controllers/matricula/matricula.controller';
+import * as matriculaValidator from '../controllers/matricula/matricula.validator';
 
 import * as faturaController from '../controllers/fatura/fatura.controller';
 
@@ -86,6 +87,12 @@ router.delete(
 router.get('/matriculas', matriculaController.getAll);
 
 router.get('/matricula/:id', matriculaController.getOne);
+
+router.post(
+  '/matricula',
+  validate(matriculaValidator.createOne),
+  matriculaController.createOne,
+);
 
 /**
  * CRUD of Fatura
