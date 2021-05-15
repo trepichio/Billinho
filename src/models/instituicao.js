@@ -21,7 +21,14 @@ module.exports = (sequelize, DataTypes) => {
     {
       tableName: 'Instituicoes',
       // name: { plural: 'Instituicoes', singular: 'Instituicao' }, // avoid wrong pluralization in portuguese,
-
+      hooks: {
+        afterValidate: (instituicao, options) => {
+          Object.assign(
+            instituicao,
+            toOnlyNumbers(instituicao, ['CNPJ']),
+          );
+        },
+      },
     },
   );
   Instituicao.associate = function (models) {
