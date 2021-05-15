@@ -99,4 +99,7 @@ router.post(
  */
 router.get('/faturas', faturaController.getAll);
 
+router.get('/matricula/:id/faturas', faturaController.getAllByMatricula);
+
+
 module.exports = router;
