@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon';
+const { DateTime } = require('luxon');
 
 const { toOnlyNumbers } = require('../helpers');
 
