@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     matriculaId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
       references: {
         model: 'Matriculas',
         key: 'id',
@@ -24,9 +26,19 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 'Aberta',
       allowNull: false,
     },
-  }, {});
+  }, {
+    paranoid: true,
+    timestamps: true,
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deleteAt: 'deleteAt',
+  });
   Fatura.associate = function (models) {
     // associations can be defined here
+    Fatura.belongsTo(models.Matricula, {
+      as: 'Matricula',
+      foreignKey: 'matriculaId',
+    });
   };
   return Fatura;
 };

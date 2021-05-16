@@ -14,6 +14,7 @@ module.exports = {
           tipo: 'Escola',
           createdAt: new Date(),
           updatedAt: new Date(),
+          deletedAt: null,
         },
         {
           nome: 'Os Ferinhas',
@@ -21,6 +22,7 @@ module.exports = {
           tipo: 'Creche',
           createdAt: new Date(),
           updatedAt: new Date(),
+          deletedAt: null,
         },
         {
           nome: 'Unisemsal',
@@ -28,6 +30,7 @@ module.exports = {
           tipo: 'Universidade',
           createdAt: new Date(),
           updatedAt: new Date(),
+          deletedAt: null,
         },
       ], {
       validate: true,

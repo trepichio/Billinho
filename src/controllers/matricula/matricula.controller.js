@@ -40,3 +40,14 @@ export const createOne = async (req, res) => {
   }
 };
 
+export const deleteOne = async (req, res) => {
+  try {
+    await Matricula.destroy({
+      where: { id: req.params.id },
+      individualHooks: true,
+    });
+    return successResponse(req, res, {});
+  } catch (error) {
+    return errorResponse(req, res, error.message);
+  }
+};

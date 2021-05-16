@@ -105,7 +105,7 @@ export const updateOne = async (req, res) => {
 
 export const deleteOne = async (req, res) => {
   try {
-    await Aluno.destroy({ where: { id: req.params.id } });
+    await Aluno.destroy({ where: { id: req.params.id }, individualHooks: true });
     return successResponse(req, res, {});
   } catch (error) {
     return errorResponse(req, res, error.message);

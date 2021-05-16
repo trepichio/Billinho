@@ -41,10 +41,33 @@ module.exports = (sequelize, DataTypes) => {
           toOnlyNumbers(aluno, ['CPF', 'celular']),
         );
       },
+      afterDestroy: async (instance, options) => {
+        const matriculas = await instance.getMatricula();
+        // Softdelete matricula model
+
+        for (const matricula of matriculas) {
+          await matricula.destroy();
+        }
+      },
+      afterRestore: (instance, options) => {
+        instance.getMatricula({ paranoid: false }).then(matricula => matricula.restore());
+      },
     },
+    paranoid: true,
+    timestamps: true,
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deleteAt: 'deleteAt',
   });
   Aluno.associate = function (models) {
     // associations can be defined here
+
+    Aluno.hasMany(models.Matricula, {
+      as: 'Matricula',
+      onDelete: 'cascade',
+      hooks: true,
+      foreignKey: 'alunoId',
+    });
   };
   return Aluno;
 };

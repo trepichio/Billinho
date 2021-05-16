@@ -16,6 +16,7 @@ module.exports = {
         formaPagamento: 'Boleto',
         createdAt: new Date(),
         updatedAt: new Date(),
+        deletedAt: null,
       },
       {
         nome: 'José da Silva',
@@ -26,6 +27,7 @@ module.exports = {
         formaPagamento: 'Cartão',
         createdAt: new Date(),
         updatedAt: new Date(),
+        deletedAt: null,
       },
       {
         nome: 'Ruth Greene',
@@ -36,6 +38,7 @@ module.exports = {
         formaPagamento: 'Cartão',
         createdAt: new Date(),
         updatedAt: new Date(),
+        deletedAt: null,
       },
       {
         nome: 'Thomas Curtis',
@@ -46,6 +49,7 @@ module.exports = {
         formaPagamento: 'Boleto',
         createdAt: new Date(),
         updatedAt: new Date(),
+        deletedAt: null,
       },
       {
         nome: 'Hilda Tran',
@@ -56,6 +60,7 @@ module.exports = {
         formaPagamento: 'Cartão',
         createdAt: new Date(),
         updatedAt: new Date(),
+        deletedAt: null,
       },
     ], {}),
 

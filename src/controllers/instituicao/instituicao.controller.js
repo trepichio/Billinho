@@ -90,7 +90,10 @@ export const updateOne = async (req, res) => {
 
 export const deleteOne = async (req, res) => {
   try {
-    await Instituicao.destroy({ where: { id: req.params.id } });
+    await Instituicao.destroy({
+      where: { id: req.params.id },
+      individualHooks: true,
+    });
     return successResponse(req, res, {});
   } catch (error) {
     return errorResponse(req, res, error.message);

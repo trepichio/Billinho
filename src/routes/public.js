@@ -94,6 +94,12 @@ router.post(
   matriculaController.createOne,
 );
 
+
+router.delete(
+  '/matricula/:id',
+  matriculaController.deleteOne,
+);
+
 /**
  * CRUD of Fatura
  */
