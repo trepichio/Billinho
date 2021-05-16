@@ -1,5 +1,6 @@
-const { toOnlyNumbers } = require('../helpers');
+import { DateTime } from 'luxon';
 
+const { toOnlyNumbers } = require('../helpers');
 
 module.exports = (sequelize, DataTypes) => {
   const Aluno = sequelize.define('Aluno', {
@@ -13,7 +14,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
-    dataNascimento: DataTypes.DATEONLY,
+    dataNascimento: {
+      type: DataTypes.DATEONLY,
+      get() {
+        const dataNascimento = DateTime.fromSQL(this.getDataValue('dataNascimento'));
+
+        return dataNascimento.toLocaleString({ locale: 'pt-br' });
+      },
+    },
     celular: DataTypes.BIGINT,
     genero: {
       type: DataTypes.ENUM,
