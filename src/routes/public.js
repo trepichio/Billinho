@@ -108,4 +108,22 @@ router.get('/faturas', faturaController.getAll);
 router.get('/matricula/:id/faturas', faturaController.getAllByMatricula);
 
 
+router.get('/fatura/:id',
+  (req, res) => res.send({ errorMessage: 'Not implemented yet.' }));
+
+router.post(
+  '/fatura',
+  (req, res) => res.send({ errorMessage: 'Not implemented yet.' }),
+);
+
+router.put(
+  '/fatura/:id',
+  (req, res) => res.send({ errorMessage: 'Not implemented yet.' }),
+);
+
+router.delete(
+  '/fatura/:id',
+  (req, res) => res.send({ errorMessage: 'Not implemented yet.' }),
+);
+
 module.exports = router;
