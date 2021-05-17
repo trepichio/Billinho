@@ -11,7 +11,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues/trepichio/Billinho)](https://github.com/trepichio/Billinho/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/trepichio/Billinho)](https://github.com/trepichio/Billinho/pulls)
 
-<!-- ![GitHUb Repo Views](https://visitor-badge.glitch.me/badge?page_id=Billinho.visitor-badge) ![GitHub Repo stars](https://badgen.net/github/stars/trepichio/Billinho) -->
+![GitHUb Repo Views](https://visitor-badge.glitch.me/badge?page_id=Billinho.visitor-badge) ![GitHub Repo stars](https://badgen.net/github/stars/trepichio/Billinho)
 ![GitHub top language](https://img.shields.io/github/languages/top/trepichio/Billinho?style=falt)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
@@ -26,6 +26,7 @@
 ## 📝 Table of Contents
 
 - [About](#about)
+- [Before you read further](#)
 - [Getting Started](#getting_started)
 - [Deployment](#deployment)
 - [Usage](#usage)
@@ -42,6 +43,10 @@ The purpose of doing this project was a requested exam from a company that I had
 In this project, particularly, I've got a struggle to make 'delete on cascade' working as I did choose to use Paranoid (Sofdeletes). I'm glady that after reading a lot on web (Google, Stackoverflow and Medium are always helpful) it did work! 😄😎
 
 I appreciated the opportunity of doing this small project and hope it will be useful somehow to anyone out there.
+
+## ⚠️ Before you read further <a name = "before_read_further"></a>
+
+I let all CRUD in the public routes INTENTIONALLY. This is for making easier and quickier an demonstration during job interview. That way I didn't need to worry about authenticating a user and needing to put the token in every request. Life is already hard enough, let this one make mine better. 🤣🤣
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
