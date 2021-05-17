@@ -94,6 +94,12 @@ router.post(
   matriculaController.createOne,
 );
 
+router.put(
+  '/matricula/:id',
+  validate(matriculaValidator.updateOne),
+  matriculaController.updateOne,
+);
+
 
 router.delete(
   '/matricula/:id',
