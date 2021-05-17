@@ -31,8 +31,7 @@
 - [Deployment](#deployment)
 - [Usage](#usage)
 - [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Authors](#authors)
+- [Author](#author)
 
 ## 🧐 About <a name = "about"></a>
 
@@ -141,7 +140,7 @@ Add notes about how to use the system.
 - [Express](https://expressjs.com/) - Server Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
-## ✍️ Author <a name = "authors"></a>
+## ✍️ Author <a name = "author"></a>
 
 | [<img alt="João Trepichio" src="https://avatars2.githubusercontent.com/u/11396817?s=460&u=085712d4f1296e6ad0a220ae7c0ea5278a9c40ed&v=4" width="100">](https://trepichio.github.io) |
 |:--------------------------------------------------:|
