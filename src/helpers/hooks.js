@@ -3,10 +3,17 @@ const { DateTime } = require('luxon');
  * This is a hook callback function to create Faturas, which should be used in model and seeder hooks
  */
 module.exports = {
-  createFaturas: function createFaturas(instance, options, queryInterface) {
+  createFaturas: async function createFaturas(instance, options, queryInterface) {
     const { valorTotal, quantidadeFaturas, diaVencimento } = instance;
 
-    const valorFatura = parseFloat(valorTotal / quantidadeFaturas).toFixed(2);
+    const paidBills = await instance.getFatura({ where: { status: 'Paga' } });
+
+    const aggPaid = paidBills.reduce((acc, curr, index) => {
+      acc.totalPago += parseFloat(curr.valor);
+      return acc;
+    }, { totalPago: 0 });
+
+    const valorFatura = parseFloat((valorTotal - aggPaid.totalPago) / (quantidadeFaturas - paidBills.length)).toFixed(2);
 
     const now = DateTime.now();
 
@@ -27,7 +34,7 @@ module.exports = {
 
     const faturas = [];
 
-    for (let i = 0; i < quantidadeFaturas; i++) {
+    for (let i = 0; i < (quantidadeFaturas - paidBills.length); i++) {
       faturas[i] = {
         valor: valorFatura,
         diaVencimento: nextPayment().date.toISODate(),

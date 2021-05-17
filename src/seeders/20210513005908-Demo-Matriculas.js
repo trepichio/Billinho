@@ -61,9 +61,14 @@ module.exports = {
       returning: true,
     });
 
+
     let faturas = [];
 
     for (const matricula of matriculas) {
+      //! this is a hack to avoid breaking the function createFaturas
+      matricula.getFatura = () => [];
+
+      // this is safe
       faturas = [...faturas, createFaturas(matricula, {}, queryInterface)];
     }
 
