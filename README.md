@@ -101,6 +101,10 @@ Now, you can use any REST Client you like and consume any of API endpoints such 
 GET http://localhost:3000/pub/instituicoes?page=1&limit=4 HTTP/1.1.
 ```
 
+If you use Visual Code there is a very useful extension that works like a REST Client. See [here](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+
+In case, you decided to go and use this extension, enjoy the `request.rest` file I've already done for you. Enjoy! 😎
+
 ## 🔧 Running the tests <a name = "tests"></a>
 
 Explain how to run the automated tests for this system.

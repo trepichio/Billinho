@@ -1,0 +1,159 @@
+### ===== PUBLIC ROUTES =====
+
+### === Institutions === ###
+### List all institutions
+GET http://localhost:3000/pub/instituicoes?page=1&limit=4 HTTP/1.1
+
+### List an institution
+GET http://localhost:3000/pub/instituicao/1 HTTP/1.1
+
+### Add an institution
+POST http://localhost:3000/pub/instituicao/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "Escola teste 8",
+  "CNPJ": "29.655.008/0001-78",
+  "tipo": "Creche"
+}
+
+### Update an institution
+PUT http://localhost:3000/pub/instituicao/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "Escola atualizada para Universidade",
+  "CNPJ": "64.902.629/0001-00",
+  "tipo": "Universidade"
+}
+
+### Delete an institution
+DELETE http://localhost:3000/pub/instituicao/2 HTTP/1.1
+
+### === Students === ###
+### List all students
+GET http://localhost:3000/pub/alunos?page=2&limit=4 HTTP/1.1
+
+### List a student
+GET http://localhost:3000/pub/aluno/1 HTTP/1.1
+
+### Add a student
+POST http://localhost:3000/pub/aluno/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "Rachel Rocher",
+  "CPF": "162.815.260-58",
+  "dataNascimento": "1988-05-21",
+  "celular": "(12)99123-4567",
+  "genero": "F",
+  "formaPagamento": "Boleto"
+}
+
+### Update a student
+# dataNascimento MUST be YYYY/mm/dd or YYYY-mm-dd or mm/dd/YYYY or mm-dd-YYYY
+# avoid using YY no matter which position
+PUT http://localhost:3000/pub/aluno/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "Marcela Mendes",
+  "CPF": "451.228.070-78",
+  "dataNascimento": "1975-05-21",
+  "celular": "(12)99123-8765",
+  "genero": "F",
+  "formaPagamento": "Cartão"
+}
+
+### Delete a student
+DELETE http://localhost:3000/pub/aluno/2 HTTP/1.1
+
+### === Enrollments === ###
+### List all enrollments
+GET http://localhost:3000/pub/matriculas?page=1&limit=4 HTTP/1.1
+
+
+### List an enrollment
+GET http://localhost:3000/pub/matricula/1 HTTP/1.1
+
+### Add an enrollment and its invoices
+POST http://localhost:3000/pub/matricula/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "valorTotal": "1000",
+  "quantidadeFaturas": "10",
+  "diaVencimento": "10",
+  "nomeCurso": "GraphQL",
+  "instituicaoId": "1",
+  "alunoId": "1"
+}
+
+### Update an enrollment
+PUT http://localhost:3000/pub/matricula/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "valorTotal": "300",
+  "quantidadeFaturas": "2",
+  "diaVencimento": "11",
+  "nomeCurso": "JS",
+  "instituicaoId": "2",
+  "alunoId": "1"
+}
+
+### Delete an enrollment
+DELETE http://localhost:3000/pub/matricula/2 HTTP/1.1
+
+### === Invoices === ###
+### List all invoices for specific enrollment
+GET http://localhost:3000/pub/matricula/6/faturas?page=1&limit=4&status=Aberta HTTP/1.1
+
+### List all invoices in Database
+GET http://localhost:3000/pub/faturas?page=1&limit=4 HTTP/1.1
+
+### List an invoice (only to show 'not implemented yet')
+GET http://localhost:3000/pub/fatura/1 HTTP/1.1
+
+### === Authentication === ###
+### Sign-up a new user
+
+POST http://localhost:3000/pub/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Joao",
+  "lastName": "Trepichio",
+  "email": "joao@gmail.com",
+  "password": "12345"
+}
+
+### Login a registered user
+POST http://localhost:3000/pub/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "joao@gmail.com",
+  "password": "12345"
+}
+
+### ===== API ROUTES =====
+### See user profile
+
+GET http://localhost:3000/api/me HTTP/1.1
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6MywiZW1haWwiOiJqb2FvQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjEtMDUtMTNUMjM6MTg6MjkuMzcxWiJ9LCJpYXQiOjE2MjA5NDc5MDl9.13KeEo6-q2c1R_I54D9LAzsr4kOBfDzFfOS3CDQFI_k
+
+### Change password of logged user
+POST http://localhost:3000/api/changePassword HTTP/1.1
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6MywiZW1haWwiOiJqb2FvQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjEtMDUtMTNUMjM6MTg6MjkuMzcxWiJ9LCJpYXQiOjE2MjA5NDc5MDl9.13KeEo6-q2c1R_I54D9LAzsr4kOBfDzFfOS3CDQFI_k
+Content-Type: application/json
+
+{
+  "oldPassword": "12345",
+  "newPassword": "abc"
+}
+
+### ===== ADMIN ROUTES =====
+### List all registered users (per page)
+GET http://localhost:3000/api/admin/allUsers?page=2&limit=4 HTTP/1.1
+x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6MywiZW1haWwiOiJqb2FvQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjEtMDUtMTNUMjM6MTg6MjkuMzcxWiJ9LCJpYXQiOjE2MjA5NDc5MDl9.13KeEo6-q2c1R_I54D9LAzsr4kOBfDzFfOS3CDQFI_k
